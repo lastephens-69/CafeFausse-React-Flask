@@ -1,0 +1,133 @@
+:root { --accent-color:#bfa14a; --bg:#fffaf4; --text:#1b1b1b; }
+
+/* layout */
+.home { display:flex; flex-direction:column; gap:2rem; }
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  min-height: 56vh;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+/* Instead of darkening, this overlay fades the image itself */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;        /* reuse the same image */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;                    /* <-- 25% visible image */
+  z-index: 0;
+}
+
+/* Inner content now sits above the faded image */
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 5rem 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);   /* subtle contrast panel */
+  border-radius: 18px;
+  display: inline-block;
+  margin: auto;
+}
+.hero-title {
+  font-family: "Bilbo Swash Caps", cursive;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  margin: 0 0 .25rem 0;
+}
+.hero-title span {
+  color: var(--accent-color);
+}
+.hero-title span { color: var(--accent-color); }
+.hero-sub { margin: .25rem 0 1rem; opacity: .95; }
+.btn-hero {
+  display: inline-block;
+  padding: .85rem 1.2rem;
+  border-radius: 999px;
+  background: var(--accent-color);
+  color: #111; text-decoration: none; font-weight: 700;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+}
+.card-elegant {
+  background: #fff; border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px; padding: 1rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+}
+.card-elegant h3 {
+  font-family: "Bilbo Swash Caps", cursive;
+  margin: 0 0 .25rem 0; font-size: 1.6rem; color:#2b2b2b;
+}
+.card-elegant p { margin: 0; opacity: .9; }
+
+/* QUOTE */
+.pullquote {
+  text-align: center;
+  font-family: "Lora", serif;
+  background: #111; color:#f5f5f5;
+  border-radius: 16px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.pullquote p { margin: 0; font-size: 1.05rem; }
+.pullquote .source { display:block; margin-top:.25rem; opacity:.8; }
+
+/* NEWSLETTER */
+.newsletter {
+  background: #fff; border-radius: 16px;
+  border: 1px solid rgba(0,0,0,.06);
+  padding: 1.25rem;
+  text-align: center;
+}
+.newsletter h2 {
+  font-family: "Bilbo Swash Caps", cursive;
+  margin: 0 0 .25rem 0; font-size: 2rem;
+}
+.newsletter p { margin: 0 0 .75rem 0; opacity:.95; }
+.nl-form {
+  display: grid; gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr auto;
+}
+.nl-form input, .nl-form button {
+  padding: .7rem .8rem; border-radius: 10px;
+  border: 1px solid #ddd; font: inherit;
+}
+.btn-gold {
+  background: var(--accent-color); color:#111; border:none; font-weight:700;
+}
+.ok { color: #1b7c2b; margin-top: .5rem; }
+.err { color: #b00020; margin-top: .5rem; }
+
+/* INFO STRIP */
+.info {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  text-align: center;
+  padding: 1rem;
+  background: #000; color:#f5f5f5; border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.08);
+  font-family: "Lora", serif;
+}
+
+/* responsive */
+@media (max-width: 860px){
+  .nl-form { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px){
+  .cards { grid-template-columns: 1fr; }
+  .nl-form { grid-template-columns: 1fr; }
+  .info  { grid-template-columns: 1fr; }
+}
